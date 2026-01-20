@@ -15,6 +15,7 @@ tex:SetAlpha(0)
 
 -- State for manual animation
 local running = false
+local sparkleShown = false
 local t = 0
 local duration = 0.55
 
@@ -81,19 +82,22 @@ end)
 -- Hook tooltip
 if GameTooltip and GameTooltip.HookScript then
   GameTooltip:HookScript("OnShow", function()
-    if TooltipTextLooksLikeFishingPool() then
+    if TooltipTextLooksLikeFishingPool() and not sparkleShown then
       ShowSparkleAtCursor()
+      sparkleShown = true
     end
   end)
 
   GameTooltip:HookScript("OnTooltipSetItem", function()
-    if TooltipTextLooksLikeFishingPool() then
+    if TooltipTextLooksLikeFishingPool() and not sparkleShown then
       ShowSparkleAtCursor()
+      sparkleShown = true
     end
   end)
 
   GameTooltip:HookScript("OnHide", function()
     running = false
+    sparkleShown = false
     Sparkle:Hide()
   end)
 else

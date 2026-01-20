@@ -15,6 +15,7 @@ tex:SetAlpha(0)
 
 -- State for manual animation
 local running = false
+local sparkleShown = false
 local t = 0
 local duration = 0.55
 
@@ -28,8 +29,8 @@ local function TooltipTextLooksLikeChest()
   if line then
     local txt = line:GetText()
     if txt then
-      -- Match common chest names in Vanilla
-      if string.find(txt, "Chest") or 
+      -- Match common chest names in Vanilla - use word boundaries to avoid false matches
+      if string.find(txt, "%sChest") or string.find(txt, "^Chest") or
          string.find(txt, "Footlocker") or
          string.find(txt, "Strongbox") or
          string.find(txt, "Cache") or
@@ -99,19 +100,22 @@ end)
 -- Hook tooltip
 if GameTooltip and GameTooltip.HookScript then
   GameTooltip:HookScript("OnShow", function()
-    if TooltipTextLooksLikeChest() then
+    if TooltipTextLooksLikeChest() and not sparkleShown then
       ShowSparkleAtCursor()
+      sparkleShown = true
     end
   end)
 
   GameTooltip:HookScript("OnTooltipSetItem", function()
-    if TooltipTextLooksLikeChest() then
+    if TooltipTextLooksLikeChest() and not sparkleShown then
       ShowSparkleAtCursor()
+      sparkleShown = true
     end
   end)
 
   GameTooltip:HookScript("OnHide", function()
     running = false
+    sparkleShown = false
     Sparkle:Hide()
   end)
 else
