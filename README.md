@@ -16,13 +16,24 @@ A World of Warcraft addon that adds sparkle effects near the cursor when mousing
   - **Mining nodes** (Copper Vein, Iron Deposit, Thorium Vein, etc.)
   - **Fishing pools** (Oily Blackmouth School, Firefin Snapper School, etc.)
   - **Treasure chests** (Battered Chest, Solid Chest, etc.)
-- **Rainbow color cycling** - Sparkles smoothly transition through colors during animation
-- **Position locking** - Sparkle stays at the node location, doesn't follow cursor
+- **Rainbow color cycling** - Sparkles smoothly transition through bright green, white, yellow, and pink
+- **Position locking** - Sparkle marks the initial screen position when you hover over a node
 - **World objects only** - Won't trigger on bag items or UI elements
 - Works with GameTooltip detection
 - Lightweight and performant
 - Modular design with separate files for each node type
 - No dependencies required
+
+## Known Limitations
+
+**Camera Movement**: The sparkle marks the screen position where the node appears when you first mouse over it. If you rotate the camera while hovering over a node, the sparkle will remain at its original screen position rather than following the node's new position.
+
+This is a limitation of the Vanilla WoW 1.12 API, which does not provide functions to:
+- Convert 3D world coordinates to 2D screen coordinates
+- Track world objects as the camera moves
+- Anchor UI elements to world objects dynamically
+
+The sparkle works perfectly when the camera is stationary and provides a clear visual indicator of node locations.
 
 ## Installation
 
