@@ -11,15 +11,22 @@ A World of Warcraft addon that adds sparkle effects near the cursor when mousing
 
 ## Features
 
-- Displays a pulsing sparkle animation when hovering over:
+- Displays a color-cycling pulsing sparkle animation when hovering over:
   - **Herbalism nodes** (Peacebloom, Silverleaf, etc.)
   - **Mining nodes** (Copper Vein, Iron Deposit, Thorium Vein, etc.)
   - **Fishing pools** (Oily Blackmouth School, Firefin Snapper School, etc.)
   - **Treasure chests** (Battered Chest, Solid Chest, etc.)
+- **Rainbow color cycling** - Sparkles smoothly transition through colors during animation
+- **Position locking** - Sparkle stays at the node location, doesn't follow cursor
+- **World objects only** - Won't trigger on bag items or UI elements
 - Works with GameTooltip detection
 - Lightweight and performant
 - Modular design with separate files for each node type
-- No dependencies1. Download or clone this repository
+- No dependencies required
+
+## Installation
+
+1. Download or clone this repository
 2. Copy the `DoomNodeSparkle` folder to your WoW addons directory:
    - **Vanilla/Classic**: `World of Warcraft\_classic_\Interface\AddOns\`
    - **Classic Era**: `World of Warcraft\_classic_era_\Interface\AddOns\`
