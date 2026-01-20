@@ -24,6 +24,11 @@ local function TooltipTextLooksLikeChest()
     return false
   end
 
+  -- Only trigger for world objects, not bag items or UI elements
+  if GameTooltip:GetOwner() then
+    return false
+  end
+
   -- Check first line for chest names
   local line = _G["GameTooltipTextLeft1"]
   if line then
@@ -90,6 +95,13 @@ Sparkle:SetScript("OnUpdate", function()
 
   if a < 0 then a = 0 end
   tex:SetAlpha(a)
+
+  -- Cycle colors smoothly
+  local cycle = (t / duration) * 3.14159 * 2  -- Full cycle through animation
+  local r = (math.sin(cycle) * 0.5 + 0.5) * 0.8 + 0.2
+  local g = (math.sin(cycle + 2.09) * 0.5 + 0.5) * 0.8 + 0.2
+  local b = (math.sin(cycle + 4.19) * 0.5 + 0.5) * 0.8 + 0.2
+  tex:SetVertexColor(r, g, b)
 
   if t >= duration then
     running = false
