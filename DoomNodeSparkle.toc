@@ -6,7 +6,7 @@
 ## SavedVariables: DoomNodeSparkleDB
 ## X-Category: Gathering
 ## X-License: All Rights Reserved
-## X-Website: https://github.com/yourusername/DoomNodeSparkle
+## X-Website: https://github.com/psharp/DoomNodeSparkle
 
 DoomNodeSparkleHerb.lua
 DoomNodeSparkleMining.lua
