@@ -24,11 +24,6 @@ local function TooltipTextLooksLikeFishingPool()
     return false
   end
 
-  -- Only trigger for world objects, not bag items or UI elements
-  if GameTooltip:GetOwner() then
-    return false
-  end
-
   for i = 2, GameTooltip:NumLines() do
     local line = _G["GameTooltipTextLeft" .. i]
     if line then

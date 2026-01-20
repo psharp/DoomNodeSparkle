@@ -24,11 +24,6 @@ local function TooltipTextLooksLikeChest()
     return false
   end
 
-  -- Only trigger for world objects, not bag items or UI elements
-  if GameTooltip:GetOwner() then
-    return false
-  end
-
   -- Check first line for chest names
   local line = _G["GameTooltipTextLeft1"]
   if line then
