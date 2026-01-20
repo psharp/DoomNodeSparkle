@@ -16,6 +16,7 @@ tex:SetAlpha(0)
 -- State for manual animation
 local running = false
 local sparkleShown = false
+local savedX, savedY = 0, 0
 local t = 0
 local duration = 0.55
 
@@ -40,12 +41,13 @@ local function TooltipTextLooksLikeMiningNode()
 end
 
 local function ShowSparkleAtCursor()
+  -- Capture cursor position immediately
   local x, y = GetCursorPosition()
   local s = UIParent:GetEffectiveScale()
-  x, y = x / s, y / s
+  savedX, savedY = x / s, y / s
 
   Sparkle:ClearAllPoints()
-  Sparkle:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x + 18, y + 18)
+  Sparkle:SetPoint("CENTER", UIParent, "BOTTOMLEFT", savedX, savedY)
 
   t = 0
   running = true
