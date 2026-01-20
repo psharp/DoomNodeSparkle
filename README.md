@@ -19,17 +19,13 @@ A World of Warcraft addon that adds sparkle effects near the cursor when mousing
 - Works with GameTooltip detection
 - Lightweight and performant
 - Modular design with separate files for each node type
-- No dependenciesNodeSparkle` folder to your WoW addons directory:
+- No dependencies1. Download or clone this repository
+2. Copy the `DoomNodeSparkle` folder to your WoW addons directory:
    - **Vanilla/Classic**: `World of Warcraft\_classic_\Interface\AddOns\`
    - **Classic Era**: `World of Warcraft\_classic_era_\Interface\AddOns\`
    - **Retail**: `World of Warcraft\_retail_\Interface\AddOns\`
 3. Restart WoW or type `/reload` in-game
-4. The addon will automatically activate when you mouse over gathering nodes or treasure chest
-   - **Vanilla/Classic**: `World of Warcraft\_classic_\Interface\AddOns\`
-   - **Classic Era**: `World of Warcraft\_classic_era_\Interface\AddOns\`
-   - **Retail**: `World of Warcraft\_retail_\Interface\AddOns\`
-3. Restart WoW or type `/reload` in-game
-4. The addon will automatically activate when you mouse over herb nodes
+4. The addon will automatically activate when you mouse over gathering nodes or treasure chests
 
 ## Development
 
@@ -55,14 +51,13 @@ detection logic in the respective node type files:
 - `DoomNodeSparkleHerb.lua` for herbs
 - `DoomNodeSparkleMining.lua` for mining nodes
 - `DoomNodeSparkleChest.lua` for treasure chests
-- `DoomNodeSparkleFishing.lua` for fishing pools
 ## Localization
 
-Currently supports English tooltip detection. To add support for other languages, modify the herb detection logic in `DoomHerbSparkle.lua`.
-
-## License
-
-All Rights Reserved
+Currently supports English tooltip detection. To add support for other languages, modify the detection logic in the respective node type files:
+- `DoomNodeSparkleHerb.lua` for herbs
+- `DoomNodeSparkleMining.lua` for mining nodes
+- `DoomNodeSparkleChest.lua` for treasure chests
+- `DoomNodeSparkleFishing.lua` for fishing pools
 
 ## Authors
 
