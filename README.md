@@ -15,6 +15,7 @@ A World of Warcraft addon that adds sparkle effects near the cursor when mousing
   - **Herbalism nodes** (Peacebloom, Silverleaf, etc.)
   - **Mining nodes** (Copper Vein, Iron Deposit, Thorium Vein, etc.)
   - **Fishing pools** (Oily Blackmouth School, Firefin Snapper School, etc.)
+  - **Skinning targets** (Skinnable beast corpses)
   - **Treasure chests** (Battered Chest, Solid Chest, etc.)
 - **Rainbow color cycling** - Sparkles smoothly transition through bright green, white, yellow, and pink
 - **Position locking** - Sparkle marks the initial screen position when you hover over a node
@@ -63,6 +64,7 @@ DoomNodeSparkle/
 ├── DoomNodeSparkleMining.lua  # Mining node detection
 ├── DoomNodeSparkleChest.lua   # Treasure chest detection
 ├── DoomNodeSparkleFishing.lua # Fishing pool detection
+├── DoomNodeSparkleSkinning.lua # Skinning target detection
 └── README.md                  # This file
 ```
 detection logic in the respective node type files:
@@ -76,6 +78,7 @@ Currently supports English tooltip detection. To add support for other languages
 - `DoomNodeSparkleMining.lua` for mining nodes
 - `DoomNodeSparkleChest.lua` for treasure chests
 - `DoomNodeSparkleFishing.lua` for fishing pools
+- `DoomNodeSparkleSkinning.lua` for skinning targets
 
 ## Authors
 

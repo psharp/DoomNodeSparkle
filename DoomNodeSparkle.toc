@@ -1,8 +1,8 @@
 ## Interface: 11200
 ## Title: DoomNodeSparkle
-## Notes: Adds sparkle effects near the cursor when mousing over gathering nodes (herbs, mining, fishing, treasure chests).
+## Notes: Adds sparkle effects near the cursor when mousing over gathering nodes (herbs, mining, fishing, skinning, treasure chests).
 ## Author: Doom/Patriq/Supafly
-## Version: 2.1
+## Version: 2.2
 ## SavedVariables: DoomNodeSparkleDB
 ## X-Category: Gathering
 ## X-License: All Rights Reserved
@@ -12,3 +12,4 @@ DoomNodeSparkleHerb.lua
 DoomNodeSparkleMining.lua
 DoomNodeSparkleChest.lua
 DoomNodeSparkleFishing.lua
+DoomNodeSparkleSkinning.lua
