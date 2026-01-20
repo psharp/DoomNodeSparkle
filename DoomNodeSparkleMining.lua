@@ -73,16 +73,41 @@ Sparkle:SetScript("OnUpdate", function()
   if a < 0 then a = 0 end
   tex:SetAlpha(a)
 
-  -- Cycle colors smoothly
-  local cycle = (t / duration) * 3.14159 * 2  -- Full cycle through animation
-  local r = (math.sin(cycle) * 0.5 + 0.5) * 0.8 + 0.2
-  local g = (math.sin(cycle + 2.09) * 0.5 + 0.5) * 0.8 + 0.2
-  local b = (math.sin(cycle + 4.19) * 0.5 + 0.5) * 0.8 + 0.2
+  -- Cycle through bright green -> white -> yellow -> pink
+  local colorProgress = math.mod(t / duration, 1)
+  local r, g, b
+  
+  if colorProgress < 0.25 then
+    -- Green to White
+    local p = colorProgress / 0.25
+    r = p
+    g = 1
+    b = p
+  elseif colorProgress < 0.5 then
+    -- White to Yellow
+    local p = (colorProgress - 0.25) / 0.25
+    r = 1
+    g = 1
+    b = 1 - p
+  elseif colorProgress < 0.75 then
+    -- Yellow to Pink
+    local p = (colorProgress - 0.5) / 0.25
+    r = 1
+    g = 1 - (0.5 * p)
+    b = 0.75 * p
+  else
+    -- Pink to Green
+    local p = (colorProgress - 0.75) / 0.25
+    r = 1 - p
+    g = 0.5 + (0.5 * p)
+    b = 0.75 - (0.75 * p)
+  end
+  
   tex:SetVertexColor(r, g, b)
 
   if t >= duration then
-    running = false
-    Sparkle:Hide()
+    -- Loop the animation instead of stopping
+    t = 0
   end
 end)
 
@@ -112,8 +137,15 @@ else
   local Poll = CreateFrame("Frame")
   Poll:SetScript("OnUpdate", function()
     if GameTooltip and GameTooltip:IsShown() and TooltipTextLooksLikeMiningNode() then
-      if not Sparkle:IsShown() then
+      if not sparkleShown then
         ShowSparkleAtCursor()
+        sparkleShown = true
+      end
+    else
+      if sparkleShown then
+        running = false
+        sparkleShown = false
+        Sparkle:Hide()
       end
     end
   end)
