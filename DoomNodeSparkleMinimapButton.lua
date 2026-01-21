@@ -87,7 +87,7 @@ end)
 
 -- Menu frame
 local menu = CreateFrame("Frame", "DoomNodeSparkleMenu", UIParent)
-menu:SetWidth(200)
+menu:SetWidth(220)
 menu:SetHeight(200)
 menu:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 menu:SetBackdrop({

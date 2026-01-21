@@ -18,7 +18,9 @@ local running = false
 local sparkleShown = false
 local savedX, savedY = 0, 0
 local t = 0
-local duration = 0.55
+local duration = 0.35
+local hideDelay = 0
+local hideDelayMax = 0.5
 
 local function TooltipTextLooksLikeSkinningNode()
   if DoomNodeSparkle_Settings and not DoomNodeSparkle_Settings.skinning then
@@ -60,9 +62,21 @@ local function ShowSparkleAtCursor()
 end
 
 Sparkle:SetScript("OnUpdate", function()
+  local e = arg1 or 0
+  
+  -- Handle hide delay
+  if hideDelay > 0 then
+    hideDelay = hideDelay - e
+    if hideDelay <= 0 then
+      running = false
+      sparkleShown = false
+      Sparkle:Hide()
+      return
+    end
+  end
+  
   if not running then return end
 
-  local e = arg1 or 0
   t = t + e
 
   -- Pulse alpha: quick in, slower out
@@ -143,9 +157,8 @@ Poll:SetScript("OnUpdate", function()
     end
   else
     if sparkleShown then
-      running = false
+      hideDelay = hideDelayMax
       sparkleShown = false
-      Sparkle:Hide()
     end
   end
 end)
