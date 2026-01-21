@@ -19,7 +19,6 @@ A World of Warcraft addon that adds sparkle effects near the cursor when mousing
   - **Treasure chests** (Battered Chest, Solid Chest, etc.)
 - **Rainbow color cycling** - Sparkles smoothly transition through bright green, white, yellow, and pink
 - **Position locking** - Sparkle marks the initial screen position when you hover over a node
-- **World objects only** - Won't trigger on bag items or UI elements
 - Works with GameTooltip detection
 - Lightweight and performant
 - Modular design with separate files for each node type
@@ -39,11 +38,11 @@ The sparkle works perfectly when the camera is stationary and provides a clear v
 ## Installation
 
 1. Download or clone this repository
-2. Copy the `DoomNodeSparkle` folder to your WoW addons directory:
-   - **Vanilla/Classic**: `World of Warcraft\_classic_\Interface\AddOns\`
-   - **Classic Era**: `World of Warcraft\_classic_era_\Interface\AddOns\`
-   - **Retail**: `World of Warcraft\_retail_\Interface\AddOns\`
-3. Restart WoW or type `/reload` in-game
+2. Copy the \`DoomNodeSparkle\` folder to your WoW addons directory:
+   - **Vanilla/Classic**: \`World of Warcraft\_classic_\Interface\AddOns\\`
+   - **Classic Era**: \`World of Warcraft\_classic_era_\Interface\AddOns\\`
+   - **Retail**: \`World of Warcraft\_retail_\Interface\AddOns\\`
+3. Restart WoW or type \`/reload\` in-game
 4. The addon will automatically activate when you mouse over gathering nodes or treasure chests
 
 ## Development
@@ -57,28 +56,29 @@ This addon is written in Lua and follows WoW addon development best practices:
 
 ## File Structure
 
-```
+\`\`\`
 DoomNodeSparkle/
-├── DoomNodeSparkle.toc        # Addon manifest/metadata
-├── DoomNodeSparkleHerb.lua    # Herbalism node detection
-├── DoomNodeSparkleMining.lua  # Mining node detection
-├── DoomNodeSparkleChest.lua   # Treasure chest detection
-├── DoomNodeSparkleFishing.lua # Fishing pool detection
+├── DoomNodeSparkle.toc         # Addon manifest/metadata
+├── DoomNodeSparkleHerb.lua     # Herbalism node detection
+├── DoomNodeSparkleMining.lua   # Mining node detection
+├── DoomNodeSparkleChest.lua    # Treasure chest detection
+├── DoomNodeSparkleFishing.lua  # Fishing pool detection
 ├── DoomNodeSparkleSkinning.lua # Skinning target detection
-└── README.md                  # This file
-```
-detection logic in the respective node type files:
-- `DoomNodeSparkleHerb.lua` for herbs
-- `DoomNodeSparkleMining.lua` for mining nodes
-- `DoomNodeSparkleChest.lua` for treasure chests
+└── README.md                   # This file
+\`\`\`
+
 ## Localization
 
 Currently supports English tooltip detection. To add support for other languages, modify the detection logic in the respective node type files:
-- `DoomNodeSparkleHerb.lua` for herbs
-- `DoomNodeSparkleMining.lua` for mining nodes
-- `DoomNodeSparkleChest.lua` for treasure chests
-- `DoomNodeSparkleFishing.lua` for fishing pools
-- `DoomNodeSparkleSkinning.lua` for skinning targets
+- \`DoomNodeSparkleHerb.lua\` for herbs
+- \`DoomNodeSparkleMining.lua\` for mining nodes
+- \`DoomNodeSparkleChest.lua\` for treasure chests
+- \`DoomNodeSparkleFishing.lua\` for fishing pools
+- \`DoomNodeSparkleSkinning.lua\` for skinning targets
+
+## License
+
+All Rights Reserved
 
 ## Authors
 

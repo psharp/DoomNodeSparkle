@@ -21,17 +21,17 @@ local t = 0
 local duration = 0.55
 
 local function TooltipTextLooksLikeSkinningNode()
-  if not GameTooltip or not GameTooltip.NumLines or GameTooltip:NumLines() < 2 then
+  if not GameTooltip or not GameTooltip.NumLines or GameTooltip:NumLines() < 1 then
     return false
   end
 
-  for i = 2, GameTooltip:NumLines() do
+  for i = 1, GameTooltip:NumLines() do
     local line = _G["GameTooltipTextLeft" .. i]
     if line then
       local txt = line:GetText()
       if txt then
         -- English matching; if you play another locale, tell me the tooltip text and I'll adjust.
-        if string.find(txt, "Skinning") or string.find(txt, "Requires Skinning") then
+        if string.find(txt, "Skinnable") or string.find(txt, "Skinning") or string.find(txt, "Requires Skinning") then
           return true
         end
       end
@@ -113,42 +113,35 @@ Sparkle:SetScript("OnUpdate", function()
   end
 end)
 
--- Hook tooltip
-if GameTooltip and GameTooltip.HookScript then
-  GameTooltip:HookScript("OnShow", function()
-    if TooltipTextLooksLikeSkinningNode() and not sparkleShown then
+-- Check tooltip when mousing over dead units
+local Poll = CreateFrame("Frame")
+local checkDelay = 0
+Poll:SetScript("OnUpdate", function()
+  checkDelay = checkDelay + arg1
+  if checkDelay < 0.1 then
+    return
+  end
+  checkDelay = 0
+  
+  local canSkin = false
+  
+  -- Check if tooltip is shown AND we're over a dead unit
+  if GameTooltip:IsShown() and UnitExists("mouseover") and UnitIsDead("mouseover") then
+    if TooltipTextLooksLikeSkinningNode() then
+      canSkin = true
+    end
+  end
+  
+  if canSkin then
+    if not sparkleShown then
       ShowSparkleAtCursor()
       sparkleShown = true
     end
-  end)
-
-  GameTooltip:HookScript("OnTooltipSetItem", function()
-    if TooltipTextLooksLikeSkinningNode() and not sparkleShown then
-      ShowSparkleAtCursor()
-      sparkleShown = true
+  else
+    if sparkleShown then
+      running = false
+      sparkleShown = false
+      Sparkle:Hide()
     end
-  end)
-
-  GameTooltip:HookScript("OnHide", function()
-    running = false
-    sparkleShown = false
-    Sparkle:Hide()
-  end)
-else
-  -- Very old fallback: poll tooltip every frame
-  local Poll = CreateFrame("Frame")
-  Poll:SetScript("OnUpdate", function()
-    if GameTooltip and GameTooltip:IsShown() and TooltipTextLooksLikeSkinningNode() then
-      if not sparkleShown then
-        ShowSparkleAtCursor()
-        sparkleShown = true
-      end
-    else
-      if sparkleShown then
-        running = false
-        sparkleShown = false
-        Sparkle:Hide()
-      end
-    end
-  end)
-end
+  end
+end)
