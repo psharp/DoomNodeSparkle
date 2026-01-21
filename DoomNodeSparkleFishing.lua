@@ -20,8 +20,10 @@ local savedX, savedY = 0, 0
 local t = 0
 local duration = 0.55
 
-local function TooltipTextLooksLikeFishingPool()
-  if not GameTooltip or not GameTooltip.NumLines or GameTooltip:NumLines() < 2 then
+local function TooltipTextLooksLikeFishingPool()  if DoomNodeSparkle_Settings and not DoomNodeSparkle_Settings.fishing then
+    return false
+  end
+    if not GameTooltip or not GameTooltip.NumLines or GameTooltip:NumLines() < 2 then
     return false
   end
 

@@ -20,8 +20,10 @@ local savedX, savedY = 0, 0
 local t = 0
 local duration = 0.55
 
-local function TooltipTextLooksLikeChest()
-  if not GameTooltip or not GameTooltip.NumLines or GameTooltip:NumLines() < 1 then
+local function TooltipTextLooksLikeChest()  if DoomNodeSparkle_Settings and not DoomNodeSparkle_Settings.chest then
+    return false
+  end
+    if not GameTooltip or not GameTooltip.NumLines or GameTooltip:NumLines() < 1 then
     return false
   end
 

@@ -21,6 +21,10 @@ local t = 0
 local duration = 0.55
 
 local function TooltipTextLooksLikeHerbNode()
+  if DoomNodeSparkle_Settings and not DoomNodeSparkle_Settings.herb then
+    return false
+  end
+  
   if not GameTooltip or not GameTooltip.NumLines or GameTooltip:NumLines() < 2 then
     return false
   end

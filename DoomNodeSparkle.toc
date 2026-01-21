@@ -8,6 +8,7 @@
 ## X-License: All Rights Reserved
 ## X-Website: xxx 
 
+DoomNodeSparkleCore.lua
 DoomNodeSparkleHerb.lua
 DoomNodeSparkleMining.lua
 DoomNodeSparkleChest.lua

@@ -19,10 +19,26 @@ A World of Warcraft addon that adds sparkle effects near the cursor when mousing
   - **Treasure chests** (Battered Chest, Solid Chest, etc.)
 - **Rainbow color cycling** - Sparkles smoothly transition through bright green, white, yellow, and pink
 - **Position locking** - Sparkle marks the initial screen position when you hover over a node
+- **Toggle system** - Enable or disable sparkles for different node types via slash commands
 - Works with GameTooltip detection
 - Lightweight and performant
 - Modular design with separate files for each node type
 - No dependencies required
+
+## Configuration
+
+Use slash commands to enable or disable sparkles for different node types:
+
+```
+/dns herb on/off       - Toggle herbalism sparkles
+/dns mining on/off     - Toggle mining sparkles
+/dns chest on/off      - Toggle treasure sparkles
+/dns fishing on/off    - Toggle fishing sparkles
+/dns skinning on/off   - Toggle skinning sparkles
+/dns status            - Show current settings
+```
+
+You can also use `/doomnodesparkle` instead of `/dns`.
 
 ## Known Limitations
 
