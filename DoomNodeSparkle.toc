@@ -3,7 +3,7 @@
 ## Notes: Adds sparkle effects near the cursor when mousing over gathering nodes (herbs, mining, fishing, skinning, treasure chests).
 ## Author: Doom/Patriq/Supafly
 ## Version: 2.2
-## SavedVariables: DoomNodeSparkleDB
+## SavedVariablesPerCharacter: DoomNodeSparkle_Settings
 ## X-Category: Gathering
 ## X-License: All Rights Reserved
 ## X-Website: xxx 
