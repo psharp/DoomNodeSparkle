@@ -9,6 +9,7 @@
 ## X-Website: xxx 
 
 DoomNodeSparkleCore.lua
+DoomNodeSparkleMinimapButton.lua
 DoomNodeSparkleHerb.lua
 DoomNodeSparkleMining.lua
 DoomNodeSparkleChest.lua

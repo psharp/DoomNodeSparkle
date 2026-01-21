@@ -27,8 +27,14 @@ A World of Warcraft addon that adds sparkle effects near the cursor when mousing
 
 ## Configuration
 
-Use slash commands to enable or disable sparkles for different node types:
+Use the **minimap button** for quick access to toggle settings, or use slash commands:
 
+**Minimap Button:**
+- Left-click: Open toggle menu
+- Right-click: Show status in chat
+- Drag: Reposition button around minimap
+
+**Slash Commands:**
 ```
 /dns herb on/off       - Toggle herbalism sparkles
 /dns mining on/off     - Toggle mining sparkles
@@ -91,6 +97,17 @@ Currently supports English tooltip detection. To add support for other languages
 - \`DoomNodeSparkleChest.lua\` for treasure chests
 - \`DoomNodeSparkleFishing.lua\` for fishing pools
 - \`DoomNodeSparkleSkinning.lua\` for skinning targets
+
+## Future Enhancement Ideas
+
+1. **Sound effects** - Play a subtle sound when a node is detected (toggle on/off)
+2. **Different colors per node type** - Each type has its own color (green for herbs, silver for mining, gold for chests, etc.)
+3. **Size and opacity controls** - Commands like `/dns size <number>` and `/dns alpha <0-1>` to customize appearance
+4. **Animation speed control** - Make the pulse faster or slower
+5. **Different sparkle textures** - Choose from star, starburst, glow, etc. (several Interface textures available)
+6. **Rare node highlighting** - Different effect for valuable nodes like Black Lotus, Thorium, or Mithril
+7. **Sound-only mode** - Option to disable visual sparkle but keep audio alert
+8. **Minimap button** - Quick access to toggle settings without typing commands
 
 ## License
 
