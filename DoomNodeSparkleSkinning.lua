@@ -20,7 +20,7 @@ local savedX, savedY = 0, 0
 local t = 0
 local duration = 0.35
 local hideDelay = 0
-local hideDelayMax = 0.5
+local hideDelayMax = 0.3
 
 local function TooltipTextLooksLikeSkinningNode()
   if DoomNodeSparkle_Settings and not DoomNodeSparkle_Settings.skinning then
@@ -56,6 +56,7 @@ local function ShowSparkleAtCursor()
   Sparkle:SetPoint("CENTER", UIParent, "BOTTOMLEFT", savedX, savedY)
 
   t = 0
+  hideDelay = 0
   running = true
   tex:SetAlpha(0)
   Sparkle:Show()
@@ -68,11 +69,15 @@ Sparkle:SetScript("OnUpdate", function()
   if hideDelay > 0 then
     hideDelay = hideDelay - e
     if hideDelay <= 0 then
+      hideDelay = 0
       running = false
       sparkleShown = false
+      tex:SetAlpha(0)
       Sparkle:Hide()
       return
     end
+    -- Don't animate during hide delay, just keep sparkle frozen
+    return
   end
   
   if not running then return end
@@ -136,7 +141,7 @@ local Poll = CreateFrame("Frame")
 local checkDelay = 0
 Poll:SetScript("OnUpdate", function()
   checkDelay = checkDelay + arg1
-  if checkDelay < 0.1 then
+  if checkDelay < 0.05 then
     return
   end
   checkDelay = 0
@@ -159,6 +164,7 @@ Poll:SetScript("OnUpdate", function()
     if sparkleShown then
       hideDelay = hideDelayMax
       sparkleShown = false
+      running = false
     end
   end
 end)
